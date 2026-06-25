@@ -79,6 +79,7 @@ public sealed class MainViewModel : ObservableObject
     private readonly DesktopSession _session;
     private readonly ModuleDataService _moduleDataService;
     private readonly SettingsViewModel _settings;
+    private readonly IServiceProvider _serviceProvider;
     private NavigationItemViewModel? _selectedNavigationItem;
     private object? _content;
 
@@ -87,12 +88,14 @@ public sealed class MainViewModel : ObservableObject
         LoginViewModel login,
         ModuleCatalog moduleCatalog,
         ModuleDataService moduleDataService,
-        SettingsViewModel settings)
+        SettingsViewModel settings,
+        IServiceProvider serviceProvider)
     {
         _session = session;
         Login = login;
         _moduleDataService = moduleDataService;
         _settings = settings;
+        _serviceProvider = serviceProvider;
 
         NavigationItems = new ObservableCollection<NavigationItemViewModel>(
             moduleCatalog.Modules.Select(x => new NavigationItemViewModel(x)));
@@ -162,6 +165,12 @@ public sealed class MainViewModel : ObservableObject
         if (SelectedNavigationItem.Definition.Key == "configuracion")
         {
             Content = _settings;
+            return;
+        }
+
+        if (SelectedNavigationItem.Definition.Key == "ventas")
+        {
+            Content = _serviceProvider.GetRequiredService<VentasViewModel>();
             return;
         }
 
