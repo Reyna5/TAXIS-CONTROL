@@ -162,6 +162,12 @@ public sealed class MainViewModel : ObservableObject
         if (!_session.IsAuthenticated || SelectedNavigationItem is null || !SelectedNavigationItem.IsEnabled)
             return;
 
+        if (SelectedNavigationItem.Definition.Key == "dashboard")
+        {
+            Content = new DashboardViewModel(NavigationItems, NavigateToModule);
+            return;
+        }
+
         if (SelectedNavigationItem.Definition.Key == "configuracion")
         {
             Content = _settings;
@@ -214,6 +220,13 @@ public sealed class MainViewModel : ObservableObject
             SelectedNavigationItem.Definition,
             _moduleDataService,
             _session);
+    }
+
+    private void NavigateToModule(string key)
+    {
+        var target = NavigationItems.FirstOrDefault(x => x.Definition.Key == key && x.IsEnabled);
+        if (target is not null)
+            SelectedNavigationItem = target;
     }
 
     private void SignOut()
