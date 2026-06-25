@@ -61,6 +61,8 @@ public static class DesktopHost
                 services.AddTransient<SyncAuditoriaViewModel>();
                 services.AddTransient<PagosViewModel>();
                 services.AddTransient<GastosViewModel>();
+                services.AddTransient<RegistroDiarioViewModel>();
+                services.AddTransient<RegistroAppDesktopViewModel>();
 
                 services.AddDbContextFactory<CompuadmoPlazaContext>(options =>
                     options.UseSqlServer(DatabaseConnectionBuilder.Build(configuration, "DatabaseNames:Compuadmo")));

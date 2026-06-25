@@ -64,6 +64,14 @@
             <views:GastosView />
         </DataTemplate>
 
+        <DataTemplate DataType="{x:Type vm:RegistroDiarioViewModel}">
+            <views:RegistroDiarioView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:RegistroAppDesktopViewModel}">
+            <views:RegistroAppView />
+        </DataTemplate>
+
         <DataTemplate DataType="{x:Type vm:ModuleWorkspaceViewModel}">
             <Grid Margin="22">
                 <Grid.RowDefinitions>

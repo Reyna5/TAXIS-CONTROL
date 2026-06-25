@@ -246,6 +246,18 @@ public sealed class MainViewModel : ObservableObject
             return;
         }
 
+        if (SelectedNavigationItem.Definition.Key == "registro")
+        {
+            Content = _serviceProvider.GetRequiredService<RegistroDiarioViewModel>();
+            return;
+        }
+
+        if (SelectedNavigationItem.Definition.Key == "registro-app")
+        {
+            Content = _serviceProvider.GetRequiredService<RegistroAppDesktopViewModel>();
+            return;
+        }
+
         Content = new ModuleWorkspaceViewModel(
             SelectedNavigationItem.Definition,
             _moduleDataService,
