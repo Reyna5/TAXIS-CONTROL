@@ -188,7 +188,8 @@ public sealed class ModuleDataService(IServiceScopeFactory scopeFactory)
     {
         var service = provider.GetRequiredService<IPosCortesService>();
         var model = await service.TryGetAsync(query.FechaTrabajo);
-        return new ModuleLoadResult("Cortes", $"Total dia: {model?.TotalDia:C} | Cerrado: {model?.Cerrado}", RowProjection.FromObjects(model is null ? [] : [model]), model);
+        var rows = model is null ? Enumerable.Empty<PosCorteViewModel>() : [model];
+        return new ModuleLoadResult("Cortes", $"Total dia: {model?.TotalDia:C} | Cerrado: {model?.Cerrado}", RowProjection.FromObjects(rows), model);
     }
 
     private static async Task<ModuleLoadResult> LoadTransportesAsync(IServiceProvider provider)
