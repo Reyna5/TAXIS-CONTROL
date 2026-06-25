@@ -192,6 +192,12 @@ public sealed class MainViewModel : ObservableObject
             return;
         }
 
+        if (SelectedNavigationItem.Definition.Key == "gafetes")
+        {
+            Content = _serviceProvider.GetRequiredService<GafetesViewModel>();
+            return;
+        }
+
         Content = new ModuleWorkspaceViewModel(
             SelectedNavigationItem.Definition,
             _moduleDataService,

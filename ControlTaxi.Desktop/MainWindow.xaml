@@ -28,6 +28,10 @@
             <views:RelacionesView />
         </DataTemplate>
 
+        <DataTemplate DataType="{x:Type vm:GafetesViewModel}">
+            <views:GafetesView />
+        </DataTemplate>
+
         <DataTemplate DataType="{x:Type vm:ModuleWorkspaceViewModel}">
             <Grid Margin="22">
                 <Grid.RowDefinitions>
