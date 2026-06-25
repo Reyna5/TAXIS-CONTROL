@@ -1,0 +1,63 @@
+<UserControl x:Class="ControlTaxi.Desktop.Views.CortesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="18">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <Border Background="{StaticResource PanelBrush}" CornerRadius="14" Padding="18" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Left">
+                    <TextBlock Text="CIERRE / CORTE" FontSize="26" FontWeight="SemiBold" />
+                    <TextBlock Text="Consulta, cálculo de comisiones, cierre, exportación e impresión del corte." Foreground="{StaticResource MutedBrush}" />
+                </StackPanel>
+                <WrapPanel DockPanel.Dock="Right">
+                    <DatePicker SelectedDate="{Binding Fecha}" Width="150" />
+                    <Button Content="Buscar" Command="{Binding ConsultarCommand}" />
+                    <Button Content="Calcular" Command="{Binding CalcularCommand}" />
+                    <Button Content="Cerrar" Command="{Binding CerrarCommand}" />
+                </WrapPanel>
+            </DockPanel>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" Margin="0,14,0,14" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <UniformGrid Columns="4">
+                    <Border Background="#FFF9FAFB" CornerRadius="12" Padding="14" Margin="4"><StackPanel><TextBlock Text="Fecha de corte" Foreground="{StaticResource MutedBrush}" /><TextBlock Text="{Binding Model.Fecha, StringFormat={}{0:dd/MM/yyyy}}" FontSize="20" FontWeight="Bold" /></StackPanel></Border>
+                    <Border Background="#FFF9FAFB" CornerRadius="12" Padding="14" Margin="4"><StackPanel><TextBlock Text="Movimientos" Foreground="{StaticResource MutedBrush}" /><TextBlock Text="{Binding Model.Movimientos}" FontSize="20" FontWeight="Bold" /></StackPanel></Border>
+                    <Border Background="#FFF9FAFB" CornerRadius="12" Padding="14" Margin="4"><StackPanel><TextBlock Text="Estatus" Foreground="{StaticResource MutedBrush}" /><TextBlock Text="{Binding Model.Cerrado}" FontSize="20" FontWeight="Bold" /></StackPanel></Border>
+                    <Border Background="#FFFFF7ED" CornerRadius="12" Padding="14" Margin="4"><StackPanel><TextBlock Text="Total cobrado" Foreground="{StaticResource MutedBrush}" /><TextBlock Text="{Binding TotalCobrado, StringFormat={}{0:C2}}" FontSize="20" FontWeight="Bold" Foreground="{StaticResource AccentDarkBrush}" /></StackPanel></Border>
+                </UniformGrid>
+
+                <UniformGrid Columns="7" Margin="0,10,0,0">
+                    <Border Background="{StaticResource PanelBrush}" CornerRadius="12" Padding="12" Margin="4"><StackPanel><TextBlock Text="Efectivo" Foreground="{StaticResource MutedBrush}" /><TextBlock Text="{Binding Model.Efectivo, StringFormat={}{0:C2}}" FontWeight="Bold" /></StackPanel></Border>
+                    <Border Background="{StaticResource PanelBrush}" CornerRadius="12" Padding="12" Margin="4"><StackPanel><TextBlock Text="Tarjeta" Foreground="{StaticResource MutedBrush}" /><TextBlock Text="{Binding Model.Tarjeta, StringFormat={}{0:C2}}" FontWeight="Bold" /></StackPanel></Border>
+                    <Border Background="{StaticResource PanelBrush}" CornerRadius="12" Padding="12" Margin="4"><StackPanel><TextBlock Text="AMEX" Foreground="{StaticResource MutedBrush}" /><TextBlock Text="{Binding Model.Amex, StringFormat={}{0:C2}}" FontWeight="Bold" /></StackPanel></Border>
+                    <Border Background="{StaticResource PanelBrush}" CornerRadius="12" Padding="12" Margin="4"><StackPanel><TextBlock Text="Gastos" Foreground="{StaticResource MutedBrush}" /><TextBlock Text="{Binding Model.Gastos, StringFormat={}{0:C2}}" FontWeight="Bold" /></StackPanel></Border>
+                    <Border Background="{StaticResource PanelBrush}" CornerRadius="12" Padding="12" Margin="4"><StackPanel><TextBlock Text="Comisiones" Foreground="{StaticResource MutedBrush}" /><TextBlock Text="{Binding Model.Comisiones, StringFormat={}{0:C2}}" FontWeight="Bold" /></StackPanel></Border>
+                    <Border Background="{StaticResource PanelBrush}" CornerRadius="12" Padding="12" Margin="4"><StackPanel><TextBlock Text="Total día" Foreground="{StaticResource MutedBrush}" /><TextBlock Text="{Binding Model.TotalDia, StringFormat={}{0:C2}}" FontWeight="Bold" /></StackPanel></Border>
+                    <Border Background="{StaticResource PanelBrush}" CornerRadius="12" Padding="12" Margin="4"><StackPanel><TextBlock Text="Diferencia" Foreground="{StaticResource MutedBrush}" /><TextBlock Text="{Binding Model.Diferencia, StringFormat={}{0:C2}}" FontWeight="Bold" /></StackPanel></Border>
+                </UniformGrid>
+
+                <Border Background="{StaticResource PanelBrush}" CornerRadius="14" Padding="16" Margin="0,12,0,0" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
+                    <StackPanel>
+                        <DockPanel>
+                            <TextBlock Text="Detalle de corte" FontSize="18" FontWeight="SemiBold" />
+                            <WrapPanel DockPanel.Dock="Right">
+                                <Button Content="CSV" Command="{Binding ExportCsvCommand}" Style="{StaticResource SecondaryButton}" />
+                                <Button Content="PDF" Command="{Binding ExportPdfCommand}" Style="{StaticResource SecondaryButton}" />
+                                <Button Content="Imprimir" Command="{Binding ImprimirCommand}" />
+                            </WrapPanel>
+                        </DockPanel>
+                        <DataGrid ItemsSource="{Binding Conceptos}" Height="260" Margin="0,8,0,0" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+
+        <TextBlock Grid.Row="2" Text="{Binding Message}" Foreground="{StaticResource MutedBrush}" />
+    </Grid>
+</UserControl>

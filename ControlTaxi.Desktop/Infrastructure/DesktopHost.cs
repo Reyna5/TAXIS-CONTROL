@@ -55,6 +55,7 @@ public static class DesktopHost
                 services.AddTransient<RelacionesViewModel>();
                 services.AddTransient<GafetesViewModel>();
                 services.AddTransient<ComisionesViewModel>();
+                services.AddTransient<CortesViewModel>();
 
                 services.AddDbContextFactory<CompuadmoPlazaContext>(options =>
                     options.UseSqlServer(DatabaseConnectionBuilder.Build(configuration, "DatabaseNames:Compuadmo")));
