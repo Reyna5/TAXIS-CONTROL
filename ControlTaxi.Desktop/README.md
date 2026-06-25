@@ -30,14 +30,20 @@ La contrasena de SQL Server no se deja fija en C# ni se versiona con Git. Config
 setx CONTROLTAXI_SQL_PASSWORD "SU_CONTRASENA"
 ```
 
-Ejemplo de cadena local:
+Ejemplo de cadena local para la instalacion real:
 
 ```json
 {
   "ConnectionStrings": {
-    "DefaultConnection": "Server=.\\SQLEXPRESS;Database=mkt2;User Id=REYNA;Password=SU_CONTRASENA;TrustServerCertificate=True;Encrypt=False;MultipleActiveResultSets=True;"
+    "DefaultConnection": "Server=REYNA;Database=mkt2;User Id=sa;Password=SU_CONTRASENA;TrustServerCertificate=True;Encrypt=False;MultipleActiveResultSets=True;"
   }
 }
+```
+
+Para no escribir la contrasena en el archivo local, use:
+
+```powershell
+setx CONTROLTAXI_SQL_PASSWORD "280625"
 ```
 
 ## Compilar
