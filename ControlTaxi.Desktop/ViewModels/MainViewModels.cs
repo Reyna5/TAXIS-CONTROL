@@ -216,6 +216,12 @@ public sealed class MainViewModel : ObservableObject
             return;
         }
 
+        if (SelectedNavigationItem.Definition.Key is "transportes" or "guias" or "taxistas")
+        {
+            Content = _serviceProvider.GetRequiredService<CatalogosViewModel>();
+            return;
+        }
+
         Content = new ModuleWorkspaceViewModel(
             SelectedNavigationItem.Definition,
             _moduleDataService,
