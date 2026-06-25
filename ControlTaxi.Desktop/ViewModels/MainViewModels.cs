@@ -174,6 +174,12 @@ public sealed class MainViewModel : ObservableObject
             return;
         }
 
+        if (SelectedNavigationItem.Definition.Key == "portal")
+        {
+            Content = _serviceProvider.GetRequiredService<PortalViewModel>();
+            return;
+        }
+
         Content = new ModuleWorkspaceViewModel(
             SelectedNavigationItem.Definition,
             _moduleDataService,

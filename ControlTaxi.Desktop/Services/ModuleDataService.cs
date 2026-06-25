@@ -32,6 +32,7 @@ public sealed class ModuleCatalog
         new("taxistas", "Taxistas", "Catalogo de taxistas", "Taxistas", "Catalogo"),
         new("usuarios", "Usuarios y permisos", "Administracion de usuarios, roles y permisos", "Usuarios", "Usuarios"),
         new("reportes", "Reportes", "Operaciones, dejadas, comisiones y concentrados", "Reportes", "Reportes"),
+        new("portal", "Portal plaza", "Compuamdo/Joyeria: dashboard, operaciones, comisiones y captura", string.Empty, "Portal"),
         new("configuracion", "Configuracion", "Conexion local, bases de datos y sincronizacion opcional", string.Empty, "Config")
     ];
 }
