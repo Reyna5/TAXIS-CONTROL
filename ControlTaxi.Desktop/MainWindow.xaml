@@ -56,6 +56,14 @@
             <views:SyncAuditoriaView />
         </DataTemplate>
 
+        <DataTemplate DataType="{x:Type vm:PagosViewModel}">
+            <views:PagosView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:GastosViewModel}">
+            <views:GastosView />
+        </DataTemplate>
+
         <DataTemplate DataType="{x:Type vm:ModuleWorkspaceViewModel}">
             <Grid Margin="22">
                 <Grid.RowDefinitions>

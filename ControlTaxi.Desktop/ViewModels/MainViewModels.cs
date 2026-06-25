@@ -234,6 +234,18 @@ public sealed class MainViewModel : ObservableObject
             return;
         }
 
+        if (SelectedNavigationItem.Definition.Key == "pagos")
+        {
+            Content = _serviceProvider.GetRequiredService<PagosViewModel>();
+            return;
+        }
+
+        if (SelectedNavigationItem.Definition.Key == "gastos")
+        {
+            Content = _serviceProvider.GetRequiredService<GastosViewModel>();
+            return;
+        }
+
         Content = new ModuleWorkspaceViewModel(
             SelectedNavigationItem.Definition,
             _moduleDataService,
