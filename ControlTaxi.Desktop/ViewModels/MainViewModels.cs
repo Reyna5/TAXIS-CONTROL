@@ -186,6 +186,12 @@ public sealed class MainViewModel : ObservableObject
             return;
         }
 
+        if (SelectedNavigationItem.Definition.Key == "relaciones")
+        {
+            Content = _serviceProvider.GetRequiredService<RelacionesViewModel>();
+            return;
+        }
+
         Content = new ModuleWorkspaceViewModel(
             SelectedNavigationItem.Definition,
             _moduleDataService,

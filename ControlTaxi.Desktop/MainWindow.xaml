@@ -24,6 +24,10 @@
             <views:ReportesView />
         </DataTemplate>
 
+        <DataTemplate DataType="{x:Type vm:RelacionesViewModel}">
+            <views:RelacionesView />
+        </DataTemplate>
+
         <DataTemplate DataType="{x:Type vm:ModuleWorkspaceViewModel}">
             <Grid Margin="22">
                 <Grid.RowDefinitions>
