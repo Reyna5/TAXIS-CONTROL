@@ -228,6 +228,12 @@ public sealed class MainViewModel : ObservableObject
             return;
         }
 
+        if (SelectedNavigationItem.Definition.Key == "sync-auditoria")
+        {
+            Content = _serviceProvider.GetRequiredService<SyncAuditoriaViewModel>();
+            return;
+        }
+
         Content = new ModuleWorkspaceViewModel(
             SelectedNavigationItem.Definition,
             _moduleDataService,

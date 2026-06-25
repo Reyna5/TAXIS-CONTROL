@@ -33,6 +33,7 @@ public sealed class ModuleCatalog
         new("usuarios", "Usuarios y permisos", "Administracion de usuarios, roles y permisos", "Usuarios", "Usuarios"),
         new("reportes", "Reportes", "Operaciones, dejadas, comisiones y concentrados", "Reportes", "Reportes"),
         new("portal", "Portal plaza", "Compuamdo/Joyeria: dashboard, operaciones, comisiones y captura", string.Empty, "Portal"),
+        new("sync-auditoria", "Sync y auditoria", "Sincronizacion App/API, pruebas de catalogos y auditoria local", "Reportes", "Sync"),
         new("configuracion", "Configuracion", "Conexion local, bases de datos y sincronizacion opcional", string.Empty, "Config")
     ];
 }

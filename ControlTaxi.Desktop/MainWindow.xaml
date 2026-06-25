@@ -52,6 +52,10 @@
             <views:UsuariosView />
         </DataTemplate>
 
+        <DataTemplate DataType="{x:Type vm:SyncAuditoriaViewModel}">
+            <views:SyncAuditoriaView />
+        </DataTemplate>
+
         <DataTemplate DataType="{x:Type vm:ModuleWorkspaceViewModel}">
             <Grid Margin="22">
                 <Grid.RowDefinitions>
