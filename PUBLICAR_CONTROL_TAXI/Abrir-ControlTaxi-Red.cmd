@@ -1,3 +1,0 @@
-@echo off
-set "CONTROLTAXI_SERVER=http://26.38.252.71:5298"
-start "" "%CONTROLTAXI_SERVER%"
