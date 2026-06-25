@@ -20,6 +20,10 @@
             <views:PortalView />
         </DataTemplate>
 
+        <DataTemplate DataType="{x:Type vm:ReportesViewModel}">
+            <views:ReportesView />
+        </DataTemplate>
+
         <DataTemplate DataType="{x:Type vm:ModuleWorkspaceViewModel}">
             <Grid Margin="22">
                 <Grid.RowDefinitions>
