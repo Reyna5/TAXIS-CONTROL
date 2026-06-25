@@ -6,11 +6,17 @@ obj/
 .vs/
 .vscode/
 *.user
+*.suo
+*.userosscache
+*.sln.docstates
 
 *.log
 *.err
 *.out
 *.tmp
+*.bak
+*.backup
+*.old
 
 .keys/
 .tmp_*/
@@ -26,6 +32,15 @@ video_frames_*/
 # Carpetas antiguas/alternativas de publicacion
 OLD_PUBLICACION_2_5/
 PUBLICAR_CONTROL_TAXI_SIN_DOTNET/
+PUBLICAR_CONTROL_TAXI/
+PUBLICAR_CONTROL_TAXI_SERVIDOR/
+PUBLICAR_CONTROL_TAXI_COMPLETO/
+CONTROL_TAXI_SERVIDOR_NUEVO/
+CONTROL_TAXI_SUBIR_SERVIDOR_SIN_DOTNET/
+CONTROL_TAXI_SUBIR_SERVIDOR_SIN_DOTNET_LISTO/
+CONTROL_TAXI_SUBIR_SERVIDOR_ACTUALIZADO/
+publish/
+**/publish/
 
 # Archivos comprimidos
 *.zip
@@ -37,3 +52,9 @@ PUBLICAR_CONTROL_TAXI/*.exe
 PUBLICAR_CONTROL_TAXI/*.deps.json
 PUBLICAR_CONTROL_TAXI/*.runtimeconfig.json
 PUBLICAR_CONTROL_TAXI/*.staticwebassets.endpoints.json
+
+# Configuracion local de Desktop con credenciales o rutas por maquina
+ControlTaxi.Desktop/appsettings.Local.json
+ControlTaxi.Desktop/*.db
+ControlTaxi.Desktop/*.db-shm
+ControlTaxi.Desktop/*.db-wal

@@ -1,0 +1,80 @@
+<UserControl x:Class="ControlTaxi.Desktop.Views.CatalogosView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="18">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Border Background="{StaticResource PanelBrush}" CornerRadius="14" Padding="18" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
+            <DockPanel>
+                <StackPanel DockPanel.Dock="Left">
+                    <TextBlock Text="CATALOGOS" FontSize="26" FontWeight="SemiBold" />
+                    <TextBlock Text="Transportes, guías y taxistas con formularios completos." Foreground="{StaticResource MutedBrush}" />
+                </StackPanel>
+                <Button Content="Actualizar" Command="{Binding ConsultarCommand}" DockPanel.Dock="Right" />
+            </DockPanel>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" Margin="0,14,0,14" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <Border Background="{StaticResource PanelBrush}" CornerRadius="14" Padding="16" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
+                    <StackPanel>
+                        <TextBlock Text="Transportes" FontSize="20" FontWeight="SemiBold" />
+                        <UniformGrid Columns="4" Margin="0,8,0,0">
+                            <StackPanel><TextBlock Text="Clave" Foreground="{StaticResource MutedBrush}" /><TextBox Text="{Binding TransporteClave, UpdateSourceTrigger=PropertyChanged}" /></StackPanel>
+                            <StackPanel><TextBlock Text="Nombre" Foreground="{StaticResource MutedBrush}" /><TextBox Text="{Binding TransporteNombre, UpdateSourceTrigger=PropertyChanged}" /></StackPanel>
+                            <StackPanel><TextBlock Text="Mínimo" Foreground="{StaticResource MutedBrush}" /><TextBox Text="{Binding TransporteMinimo, UpdateSourceTrigger=PropertyChanged}" /></StackPanel>
+                            <StackPanel><TextBlock Text="Máximo" Foreground="{StaticResource MutedBrush}" /><TextBox Text="{Binding TransporteMaximo, UpdateSourceTrigger=PropertyChanged}" /></StackPanel>
+                            <StackPanel><TextBlock Text="Comisión" Foreground="{StaticResource MutedBrush}" /><TextBox Text="{Binding TransporteComision, UpdateSourceTrigger=PropertyChanged}" /></StackPanel>
+                            <StackPanel><TextBlock Text="Desc. efectivo" Foreground="{StaticResource MutedBrush}" /><TextBox Text="{Binding TransporteDescEfectivo, UpdateSourceTrigger=PropertyChanged}" /></StackPanel>
+                            <StackPanel><TextBlock Text="Desc. tarjeta" Foreground="{StaticResource MutedBrush}" /><TextBox Text="{Binding TransporteDescTarjeta, UpdateSourceTrigger=PropertyChanged}" /></StackPanel>
+                            <StackPanel><TextBlock Text="Desc. AMEX" Foreground="{StaticResource MutedBrush}" /><TextBox Text="{Binding TransporteDescAmex, UpdateSourceTrigger=PropertyChanged}" /></StackPanel>
+                        </UniformGrid>
+                        <Button Content="Guardar transporte" Command="{Binding GuardarTransporteCommand}" Width="190" HorizontalAlignment="Left" />
+                        <DataGrid ItemsSource="{Binding Transportes}" SelectedItem="{Binding SelectedTransporte}" SelectionChanged="Transportes_SelectionChanged" Height="180" Margin="0,8,0,0" />
+                    </StackPanel>
+                </Border>
+
+                <Border Background="{StaticResource PanelBrush}" CornerRadius="14" Padding="16" Margin="0,12,0,0" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
+                    <StackPanel>
+                        <TextBlock Text="Guías" FontSize="20" FontWeight="SemiBold" />
+                        <UniformGrid Columns="5" Margin="0,8,0,0">
+                            <StackPanel><TextBlock Text="Clave" Foreground="{StaticResource MutedBrush}" /><TextBox Text="{Binding GuiaClave, UpdateSourceTrigger=PropertyChanged}" /></StackPanel>
+                            <StackPanel><TextBlock Text="Nombre" Foreground="{StaticResource MutedBrush}" /><TextBox Text="{Binding GuiaNombre, UpdateSourceTrigger=PropertyChanged}" /></StackPanel>
+                            <StackPanel><TextBlock Text="Teléfono" Foreground="{StaticResource MutedBrush}" /><TextBox Text="{Binding GuiaTelefono, UpdateSourceTrigger=PropertyChanged}" /></StackPanel>
+                            <StackPanel><TextBlock Text="Comisión" Foreground="{StaticResource MutedBrush}" /><TextBox Text="{Binding GuiaComision, UpdateSourceTrigger=PropertyChanged}" /></StackPanel>
+                            <StackPanel><TextBlock Text="Estatus" Foreground="{StaticResource MutedBrush}" /><TextBox Text="{Binding GuiaEstatus, UpdateSourceTrigger=PropertyChanged}" /></StackPanel>
+                        </UniformGrid>
+                        <Button Content="Guardar guía" Command="{Binding GuardarGuiaCommand}" Width="170" HorizontalAlignment="Left" />
+                        <DataGrid ItemsSource="{Binding Guias}" SelectedItem="{Binding SelectedGuia}" SelectionChanged="Guias_SelectionChanged" Height="180" Margin="0,8,0,0" />
+                    </StackPanel>
+                </Border>
+
+                <Border Background="{StaticResource PanelBrush}" CornerRadius="14" Padding="16" Margin="0,12,0,0" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
+                    <StackPanel>
+                        <DockPanel>
+                            <TextBlock Text="Taxistas" FontSize="20" FontWeight="SemiBold" />
+                            <WrapPanel DockPanel.Dock="Right">
+                                <TextBox Text="{Binding BusquedaTaxista, UpdateSourceTrigger=PropertyChanged}" Width="220" />
+                                <Button Content="Buscar taxista" Command="{Binding ConsultarCommand}" />
+                            </WrapPanel>
+                        </DockPanel>
+                        <UniformGrid Columns="6" Margin="0,8,0,0">
+                            <StackPanel><TextBlock Text="Clave" Foreground="{StaticResource MutedBrush}" /><TextBox Text="{Binding TaxistaClave, UpdateSourceTrigger=PropertyChanged}" /></StackPanel>
+                            <StackPanel><TextBlock Text="Nombre" Foreground="{StaticResource MutedBrush}" /><TextBox Text="{Binding TaxistaNombre, UpdateSourceTrigger=PropertyChanged}" /></StackPanel>
+                            <StackPanel><TextBlock Text="Teléfono" Foreground="{StaticResource MutedBrush}" /><TextBox Text="{Binding TaxistaTelefono, UpdateSourceTrigger=PropertyChanged}" /></StackPanel>
+                            <StackPanel><TextBlock Text="Unidad" Foreground="{StaticResource MutedBrush}" /><TextBox Text="{Binding TaxistaUnidad, UpdateSourceTrigger=PropertyChanged}" /></StackPanel>
+                            <StackPanel><TextBlock Text="Placas" Foreground="{StaticResource MutedBrush}" /><TextBox Text="{Binding TaxistaPlacas, UpdateSourceTrigger=PropertyChanged}" /></StackPanel>
+                            <StackPanel><TextBlock Text="Estatus" Foreground="{StaticResource MutedBrush}" /><TextBox Text="{Binding TaxistaEstatus, UpdateSourceTrigger=PropertyChanged}" /></StackPanel>
+                        </UniformGrid>
+                        <Button Content="Guardar taxista" Command="{Binding GuardarTaxistaCommand}" Width="180" HorizontalAlignment="Left" />
+                        <DataGrid ItemsSource="{Binding Taxistas}" SelectedItem="{Binding SelectedTaxista}" SelectionChanged="Taxistas_SelectionChanged" Height="240" Margin="0,8,0,0" />
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </ScrollViewer>
+        <TextBlock Grid.Row="2" Text="{Binding Message}" Foreground="{StaticResource MutedBrush}" />
+    </Grid>
+</UserControl>

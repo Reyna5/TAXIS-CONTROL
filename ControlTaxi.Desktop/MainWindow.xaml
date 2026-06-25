@@ -1,0 +1,265 @@
+<Window x:Class="ControlTaxi.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:ControlTaxi.Desktop.ViewModels"
+        xmlns:views="clr-namespace:ControlTaxi.Desktop.Views"
+        xmlns:local="clr-namespace:ControlTaxi.Desktop"
+        Title="Control de Taxi Desktop"
+        Width="1400"
+        Height="840"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVisibility" />
+        <local:StringToVisibilityConverter x:Key="StringToVisibility" />
+
+        <DataTemplate DataType="{x:Type vm:VentasViewModel}">
+            <views:VentasView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:PortalViewModel}">
+            <views:PortalView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:ReportesViewModel}">
+            <views:ReportesView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:RelacionesViewModel}">
+            <views:RelacionesView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:GafetesViewModel}">
+            <views:GafetesView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:ComisionesViewModel}">
+            <views:ComisionesView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:CortesViewModel}">
+            <views:CortesView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:DashboardViewModel}">
+            <views:DashboardView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:CatalogosViewModel}">
+            <views:CatalogosView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:UsuariosViewModel}">
+            <views:UsuariosView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:SyncAuditoriaViewModel}">
+            <views:SyncAuditoriaView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:PagosViewModel}">
+            <views:PagosView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:GastosViewModel}">
+            <views:GastosView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:RegistroDiarioViewModel}">
+            <views:RegistroDiarioView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:RegistroAppDesktopViewModel}">
+            <views:RegistroAppView />
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:ModuleWorkspaceViewModel}">
+            <Grid Margin="22">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <Border Background="{StaticResource PanelBrush}" CornerRadius="14" Padding="18" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
+                    <DockPanel>
+                        <StackPanel DockPanel.Dock="Left">
+                            <TextBlock Text="{Binding Title}" FontSize="26" FontWeight="SemiBold" />
+                            <TextBlock Text="{Binding Summary}" Foreground="{StaticResource MutedBrush}" Margin="0,6,0,0" />
+                        </StackPanel>
+                        <Button DockPanel.Dock="Right" Content="Actualizar" Command="{Binding LoadCommand}" HorizontalAlignment="Right" />
+                    </DockPanel>
+                </Border>
+
+                <Border Grid.Row="1" Background="{StaticResource PanelBrush}" CornerRadius="14" Padding="16" Margin="0,14,0,14" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
+                    <StackPanel>
+                        <TextBlock Text="Filtros y captura" FontWeight="SemiBold" Margin="0,0,0,8" />
+                        <WrapPanel>
+                            <StackPanel Width="145">
+                                <TextBlock Text="Busqueda" Foreground="{StaticResource MutedBrush}" />
+                                <TextBox Text="{Binding Query.Busqueda, UpdateSourceTrigger=PropertyChanged}" />
+                            </StackPanel>
+                            <StackPanel Width="130">
+                                <TextBlock Text="Folio" Foreground="{StaticResource MutedBrush}" />
+                                <TextBox Text="{Binding Query.Folio, UpdateSourceTrigger=PropertyChanged}" />
+                            </StackPanel>
+                            <StackPanel Width="145">
+                                <TextBlock Text="Fecha inicio" Foreground="{StaticResource MutedBrush}" />
+                                <DatePicker SelectedDate="{Binding Query.FechaInicio}" />
+                            </StackPanel>
+                            <StackPanel Width="145">
+                                <TextBlock Text="Fecha fin" Foreground="{StaticResource MutedBrush}" />
+                                <DatePicker SelectedDate="{Binding Query.FechaFin}" />
+                            </StackPanel>
+                            <StackPanel Width="145">
+                                <TextBlock Text="Fecha trabajo" Foreground="{StaticResource MutedBrush}" />
+                                <DatePicker SelectedDate="{Binding Query.FechaTrabajo}" />
+                            </StackPanel>
+                            <StackPanel Width="110">
+                                <TextBlock Text="Importe" Foreground="{StaticResource MutedBrush}" />
+                                <TextBox Text="{Binding Query.Importe, UpdateSourceTrigger=PropertyChanged}" />
+                            </StackPanel>
+                            <StackPanel Width="90">
+                                <TextBlock Text="Pax" Foreground="{StaticResource MutedBrush}" />
+                                <TextBox Text="{Binding Query.Pax, UpdateSourceTrigger=PropertyChanged}" />
+                            </StackPanel>
+                            <StackPanel Width="130">
+                                <TextBlock Text="Staff/Vendedor" Foreground="{StaticResource MutedBrush}" />
+                                <TextBox Text="{Binding Query.Staff, UpdateSourceTrigger=PropertyChanged}" />
+                            </StackPanel>
+                            <StackPanel Width="160">
+                                <TextBlock Text="Nombre" Foreground="{StaticResource MutedBrush}" />
+                                <TextBox Text="{Binding Query.Nombre, UpdateSourceTrigger=PropertyChanged}" />
+                            </StackPanel>
+                            <StackPanel Width="110">
+                                <TextBlock Text="Gafete" Foreground="{StaticResource MutedBrush}" />
+                                <TextBox Text="{Binding Query.Gafete, UpdateSourceTrigger=PropertyChanged}" />
+                            </StackPanel>
+                            <StackPanel Width="160">
+                                <TextBlock Text="Hotel" Foreground="{StaticResource MutedBrush}" />
+                                <TextBox Text="{Binding Query.Hotel, UpdateSourceTrigger=PropertyChanged}" />
+                            </StackPanel>
+                            <StackPanel Width="160">
+                                <TextBlock Text="Destino" Foreground="{StaticResource MutedBrush}" />
+                                <TextBox Text="{Binding Query.Destino, UpdateSourceTrigger=PropertyChanged}" />
+                            </StackPanel>
+                            <StackPanel Width="145">
+                                <TextBlock Text="Metodo pago" Foreground="{StaticResource MutedBrush}" />
+                                <TextBox Text="{Binding Query.MetodoPago, UpdateSourceTrigger=PropertyChanged}" />
+                            </StackPanel>
+                            <StackPanel Width="170">
+                                <TextBlock Text="Clave/Usuario edicion" Foreground="{StaticResource MutedBrush}" />
+                                <TextBox Text="{Binding Query.Clave, UpdateSourceTrigger=PropertyChanged}" ToolTip="Use para catalogos; para usuarios capture tambien Usuario edicion si aplica." />
+                            </StackPanel>
+                            <StackPanel Width="170">
+                                <TextBlock Text="Usuario edicion" Foreground="{StaticResource MutedBrush}" />
+                                <TextBox Text="{Binding Query.UsuarioEdicion, UpdateSourceTrigger=PropertyChanged}" />
+                            </StackPanel>
+                            <StackPanel Width="160">
+                                <TextBlock Text="Rol/Estatus" Foreground="{StaticResource MutedBrush}" />
+                                <TextBox Text="{Binding Query.Rol, UpdateSourceTrigger=PropertyChanged}" />
+                            </StackPanel>
+                            <StackPanel Width="220">
+                                <TextBlock Text="Permisos CSV" Foreground="{StaticResource MutedBrush}" />
+                                <TextBox Text="{Binding Query.Permisos, UpdateSourceTrigger=PropertyChanged}" />
+                            </StackPanel>
+                        </WrapPanel>
+                        <WrapPanel Margin="0,6,0,0">
+                            <Button Content="{Binding PrimaryActionText}"
+                                    Command="{Binding PrimaryActionCommand}"
+                                    Visibility="{Binding PrimaryActionText, Converter={StaticResource StringToVisibility}}" />
+                            <Button Content="{Binding SecondaryActionText}"
+                                    Command="{Binding SecondaryActionCommand}"
+                                    Style="{StaticResource SecondaryButton}"
+                                    Visibility="{Binding SecondaryActionText, Converter={StaticResource StringToVisibility}}" />
+                        </WrapPanel>
+                    </StackPanel>
+                </Border>
+
+                <DataGrid Grid.Row="2" ItemsSource="{Binding Rows}" />
+
+                <TextBlock Grid.Row="3" Text="{Binding Message}" Foreground="{StaticResource MutedBrush}" Margin="0,10,0,0" />
+            </Grid>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type vm:SettingsViewModel}">
+            <Grid Margin="22">
+                <Border Background="{StaticResource PanelBrush}" CornerRadius="14" Padding="22" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1">
+                    <StackPanel>
+                        <TextBlock Text="Configuracion local" FontSize="26" FontWeight="SemiBold" />
+                        <TextBlock Text="La aplicacion Desktop usa SQL Server local o de red local. La contrasena no se versiona en Git; edite el archivo local o use la variable CONTROLTAXI_SQL_PASSWORD." Foreground="{StaticResource MutedBrush}" TextWrapping="Wrap" Margin="0,8,0,20" />
+                        <TextBlock Text="Archivo local:" FontWeight="SemiBold" />
+                        <TextBlock Text="{Binding LocalSettingsPath}" Foreground="{StaticResource MutedBrush}" Margin="0,4,0,12" />
+                        <Button Content="Abrir configuracion local" Command="{Binding OpenLocalSettingsCommand}" Width="220" HorizontalAlignment="Left" />
+                        <Separator Margin="0,18,0,18" />
+                        <TextBlock Text="{Binding Server}" TextWrapping="Wrap" />
+                        <TextBlock Text="{Binding PosDatabase, StringFormat=POS: {0}}" Margin="0,8,0,0" />
+                        <TextBlock Text="{Binding AppDatabase, StringFormat=ControlTaxis: {0}}" />
+                        <TextBlock Text="{Binding CompuadmoDatabase, StringFormat=Compuamdo: {0}}" />
+                        <TextBlock Text="{Binding JoyeriaDatabase, StringFormat=Joyeria: {0}}" />
+                        <TextBlock Text="{Binding ExternalSyncStatus}" Foreground="{StaticResource AccentDarkBrush}" FontWeight="SemiBold" Margin="0,12,0,0" />
+                        <TextBlock Text="{Binding Message}" Foreground="{StaticResource MutedBrush}" Margin="0,16,0,0" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </DataTemplate>
+    </Window.Resources>
+
+    <Grid>
+        <Grid Visibility="{Binding IsLoginVisible, Converter={StaticResource BoolToVisibility}}">
+            <Border Width="430" Padding="34" Background="{StaticResource PanelBrush}" CornerRadius="18" BorderBrush="{StaticResource BorderBrush}" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <StackPanel DataContext="{Binding Login}">
+                    <TextBlock Text="Control de Taxi" FontSize="31" FontWeight="Bold" HorizontalAlignment="Center" />
+                    <TextBlock Text="Aplicacion Desktop WPF" Foreground="{StaticResource MutedBrush}" HorizontalAlignment="Center" Margin="0,6,0,26" />
+                    <TextBlock Text="Usuario" FontWeight="SemiBold" />
+                    <TextBox Text="{Binding Usuario, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock Text="Contrasena" FontWeight="SemiBold" />
+                    <PasswordBox x:Name="PasswordBox" KeyDown="PasswordBox_KeyDown" />
+                    <Button Content="Entrar" Click="LoginButton_Click" Margin="0,12,0,0" />
+                    <TextBlock Text="{Binding ErrorMessage}" Foreground="#FFB91C1C" TextWrapping="Wrap" Margin="0,14,0,0" />
+                    <TextBlock Text="Si SQL Server no esta disponible, revise Configuracion local en %AppData%\ControlTaxi." Foreground="{StaticResource MutedBrush}" TextWrapping="Wrap" Margin="0,18,0,0" />
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <Grid Visibility="{Binding IsShellVisible, Converter={StaticResource BoolToVisibility}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="270" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.Column="0" Background="#FF111827">
+                <DockPanel>
+                    <StackPanel DockPanel.Dock="Top" Margin="18,22">
+                        <TextBlock Text="Control de Taxi" Foreground="White" FontSize="22" FontWeight="Bold" />
+                        <TextBlock Text="{Binding Usuario, StringFormat=Usuario: {0}}" Foreground="#FFD1D5DB" Margin="0,6,0,0" />
+                    </StackPanel>
+                    <Button DockPanel.Dock="Bottom" Content="Cerrar sesion" Command="{Binding SignOutCommand}" Margin="18" Style="{StaticResource SecondaryButton}" />
+                    <ListBox ItemsSource="{Binding NavigationItems}"
+                             SelectedItem="{Binding SelectedNavigationItem, Mode=TwoWay}"
+                             Background="Transparent"
+                             BorderThickness="0"
+                             Margin="10"
+                             Foreground="White">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="4" Opacity="{Binding IsEnabled, Converter={x:Static local:EnabledOpacityConverter.Instance}}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="56" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <Border Background="#22FFFFFF" CornerRadius="10" Width="42" Height="42">
+                                        <TextBlock Text="{Binding Icon}" Foreground="#FFFCD34D" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="11" />
+                                    </Border>
+                                    <TextBlock Grid.Column="1" Text="{Binding Title}" Foreground="White" FontWeight="SemiBold" VerticalAlignment="Center" TextWrapping="Wrap" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </DockPanel>
+            </Border>
+
+            <ContentControl Grid.Column="1" Content="{Binding Content}" />
+        </Grid>
+    </Grid>
+</Window>
